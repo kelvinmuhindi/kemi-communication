@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --brand-orange: #FF9700;
+  --brand-orange-deep: #E08300;
+  --brand-ink: #181614;
+  --brand-ink-soft: #3A3633;
+  --brand-steel: #5B6670;
+  --brand-paper: #FFFFFF;
+  --brand-paper-warm: #FAF7F3;
+  --brand-line: #ECE7E0;
+
+  /*
+    Font stack note for developers:
+    This project was built in a sandboxed environment without access to
+    fonts.googleapis.com, so it currently falls back to system fonts.
+    To use the intended typefaces (Archivo Black for display, Inter for
+    body), restore next/font/google in src/app/layout.tsx:
+
+      import { Archivo_Black, Inter } from "next/font/google";
+      const archivoBlack = Archivo_Black({ variable: "--font-archivo-black", weight: "400", subsets: ["latin"] });
+      const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+
+    ...and add `${archivoBlack.variable} ${inter.variable}` to the <html> className.
+    Until then, the stacks below approximate the intended look.
+  */
+  --font-display-fallback: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-body-fallback: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+@theme inline {
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-deep: var(--brand-orange-deep);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-ink-soft: var(--brand-ink-soft);
+  --color-brand-steel: var(--brand-steel);
+  --color-brand-paper: var(--brand-paper);
+  --color-brand-paper-warm: var(--brand-paper-warm);
+  --color-brand-line: var(--brand-line);
+  --font-display: var(--font-archivo-black, var(--font-display-fallback));
+  --font-body: var(--font-inter, var(--font-body-fallback));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--brand-paper);
+  color: var(--brand-ink);
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+.route-rule {
+  height: 3px;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--brand-orange) 0px,
+    var(--brand-orange) 22px,
+    transparent 22px,
+    transparent 34px
+  );
+}
