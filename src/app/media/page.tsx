@@ -20,7 +20,7 @@ export default function MediaPage() {
         <PageHero
           eyebrow="Media"
           title="News & updates from Kemi Communications"
-          description="Announcements, company news, and stories from the road."
+          description="Announcements, company news and stories from the road."
         />
 
         <section id="news" className="px-6 py-[90px]">
@@ -62,7 +62,7 @@ export default function MediaPage() {
               Our blog is launching soon
             </h2>
             <p className="mx-auto max-w-[480px] text-[15px] leading-relaxed text-brand-steel">
-              We&apos;ll be sharing travel tips, route guides, and industry
+              We&apos;ll be sharing travel tips, route guides and industry
               updates relevant to freight and logistics in East Africa.
               Check back soon.
             </p>

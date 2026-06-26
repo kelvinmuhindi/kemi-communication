@@ -142,7 +142,7 @@ export const aboutContent = {
   intro:
     "Kemi Communications Ltd is a road freight and logistics company based in Nairobi, Kenya, built to move cargo reliably for manufacturers, stockists, wholesalers and retailers.",
   story:
-    "We started with a simple commitment: when we say a delivery will arrive on time, it arrives on time. That principle now drives every route we run, every truck we dispatch, and every client relationship we build, from single-truck local hauls to multi-stop regional distribution.",
+    "We started with a simple commitment: when we say a delivery will arrive on time, it arrives on time. That principle now drives every route we run, every truck we dispatch and every client relationship we build, from single-truck local hauls to multi-stop regional distribution.",
   mission:
     "To move our clients' cargo safely, reliably and on schedule, every trip, every time.",
   vision:
