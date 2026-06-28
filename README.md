@@ -49,6 +49,9 @@ src/
     resources/page.tsx
     contact/page.tsx
     get-a-quote/page.tsx
+    api/
+      contact/route.ts          POST endpoint for the contact form
+      get-a-quote/route.ts      POST endpoint for the quote request form
   components/
     layout/
       Header.tsx             Sticky nav with mobile menu
@@ -63,6 +66,8 @@ src/
       Coverage.tsx
       Testimonial.tsx
       CtaBand.tsx               Reusable CTA band, used at the bottom of most pages
+      ContactForm.tsx           Client component, handles /contact form state + submit
+      QuoteForm.tsx             Client component, handles /get-a-quote form state + submit
     ui/
       Button.tsx               Shared button variants (primary/ghost/dark/outline-light)
       Eyebrow.tsx               Small section label with dash
@@ -71,6 +76,8 @@ src/
                                  about/media/resources content, contact info, and
                                  quote-form dropdown options. Edit here first — most
                                  content changes never need to touch a component file.
+    email.ts                    Resend email-sending helper, used by both API routes
+    whatsapp.ts                 WhatsApp Business Cloud API helper, used by both API routes
 public/
   images/
     logo.jpeg                    Client-provided logo
@@ -138,10 +145,75 @@ these CSS variables with system-font fallbacks.
 - Google Analytics 4
 
 **Pending developer work:**
-- Both forms (`/contact` and `/get-a-quote`) are frontend-only right now —
-  submitting them does nothing yet. A developer needs to wire them to an
-  email service (e.g. Resend, SendGrid) or a Node.js API route that stores
-  submissions and notifies the team.
+- WhatsApp notifications are coded and wired up, but inactive until you
+  complete Meta's WhatsApp Business API setup (see below). Email
+  notifications work as soon as you add a Resend API key.
+
+## Form Notifications Setup
+
+Both `/contact` and `/get-a-quote` submit to real API routes
+(`src/app/api/contact/route.ts` and `src/app/api/get-a-quote/route.ts`)
+that validate the input, then attempt to send an email and a WhatsApp
+message. Both notification channels are independent: if one isn't
+configured yet, the other still works, and the form still succeeds for
+the visitor either way.
+
+### Email notifications (Resend)
+
+1. Sign up at [resend.com](https://resend.com) (free tier is generous,
+   no credit card required to start).
+2. Get an API key from the Resend dashboard.
+3. In Vercel: **Project Settings → Environment Variables**, add:
+   - `RESEND_API_KEY` — the key from step 2
+   - `NOTIFY_EMAIL_TO` — the inbox that should receive form
+     notifications (defaults to the address in `siteConfig.email` if
+     not set)
+   - `NOTIFY_EMAIL_FROM` — the "from" address. Until you verify a
+     sending domain in Resend, use their sandbox address
+     `onboarding@resend.dev` for testing. To send from your own domain
+     (e.g. `notifications@kemicommunication.com`), verify that domain
+     under **Domains** in the Resend dashboard first, this involves
+     adding a few DNS records, similar to the Vercel domain setup.
+4. Redeploy (or just wait for the next deploy) for the new environment
+   variables to take effect.
+
+### WhatsApp notifications (Meta WhatsApp Business Cloud API)
+
+This requires a Meta developer account and business verification, it's
+free but involves more setup steps than email:
+
+1. Go to [developers.facebook.com](https://developers.facebook.com) and
+   create a Meta Developer account if you don't have one.
+2. Create a new App → select **Business** as the app type.
+3. Add the **WhatsApp** product to the app.
+4. In the WhatsApp setup, Meta provides a free test phone number you can
+   use immediately, or you can register your own business number.
+5. From the WhatsApp dashboard, copy:
+   - The **temporary access token** (for testing) or generate a
+     **permanent token** under System Users for production use
+   - The **Phone Number ID** (not the phone number itself, an internal
+     numeric ID Meta assigns)
+6. In Vercel: **Project Settings → Environment Variables**, add:
+   - `WHATSAPP_ACCESS_TOKEN` — the token from step 5
+   - `WHATSAPP_PHONE_NUMBER_ID` — the phone number ID from step 5
+   - `WHATSAPP_NOTIFY_TO` — the phone number that should receive
+     notifications, with country code, no `+` or spaces (e.g.
+     `254704881748`)
+7. Important: Meta's test numbers can only message phone numbers that
+   have been added to an approved recipient list in the dashboard while
+   the app is in development mode. For unrestricted sending, the app
+   needs to go through Meta's app review process.
+8. Redeploy for the new environment variables to take effect.
+
+Until these WhatsApp variables are set, the API routes log a warning and
+skip sending, they never fail the form submission because of it.
+
+### Testing locally
+
+Create a `.env.local` file in the project root (this file is
+git-ignored, never commit it) with the same variables listed above, then
+run `npm run dev`. Submitting either form will attempt real sends using
+whatever keys are present.
 
 ## Useful commands
 

@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
+import { ContactForm } from "@/components/sections/ContactForm";
 import { siteConfig } from "@/lib/content";
 
 export const metadata = {
@@ -110,62 +111,7 @@ export default function ContactPage() {
               <h2 className="mb-6 font-display text-2xl text-brand-ink lg:text-[28px]">
                 Send us a message
               </h2>
-              <form className="flex flex-col gap-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-brand-steel"
-                  >
-                    Full Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    className="w-full rounded-sm border border-brand-line bg-white px-4 py-2.5 text-sm text-brand-ink focus:border-brand-orange focus:outline-none"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-brand-steel"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full rounded-sm border border-brand-line bg-white px-4 py-2.5 text-sm text-brand-ink focus:border-brand-orange focus:outline-none"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-brand-steel"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="w-full rounded-sm border border-brand-line bg-white px-4 py-2.5 text-sm text-brand-ink focus:border-brand-orange focus:outline-none"
-                    placeholder="How can we help?"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-1 rounded-sm bg-brand-orange px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-orange-deep"
-                >
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>
