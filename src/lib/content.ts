@@ -1,4 +1,4 @@
-// Centralized site content. Update copy, services, fleet, and contact
+// Centralized site content. Update copy, services, fleet and contact
 // details here without touching component code.
 
 export const siteConfig = {
@@ -210,11 +210,6 @@ export const resourceItems = [
   {
     title: "Company Brochure",
     description: "An overview of our services, fleet and coverage area.",
-    status: "coming-soon",
-  },
-  {
-    title: "Rate Guide",
-    description: "Indicative pricing for our core routes and vehicle types.",
     status: "coming-soon",
   },
 ];

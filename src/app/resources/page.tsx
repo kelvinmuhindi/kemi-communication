@@ -10,7 +10,7 @@ import { resourceItems } from "@/lib/content";
 export const metadata = {
   title: "Resources | Kemi Communication Ltd",
   description:
-    "Company brochures, FAQs and rate guides from Kemi Communication Ltd.",
+    "Company brochures and FAQs from Kemi Communication Ltd.",
 };
 
 export default function ResourcesPage() {
@@ -21,7 +21,7 @@ export default function ResourcesPage() {
         <PageHero
           eyebrow="Resources"
           title="Helpful documents & guides"
-          description="Brochures, FAQs and rate information to help you plan your shipment."
+          description="Brochures and FAQs to help you plan your shipment."
         />
 
         <section className="px-6 py-[90px]">
