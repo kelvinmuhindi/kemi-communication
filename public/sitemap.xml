@@ -64,4 +64,18 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://www.kemicommunication.com/privacy-policy</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.kemicommunication.com/terms-of-service</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

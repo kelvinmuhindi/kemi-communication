@@ -104,6 +104,10 @@ export function Footer() {
           © {new Date().getFullYear()} {siteConfig.legalName}. All rights
           reserved.
         </span>
+        <span className="mx-1.5">·</span>
+        <a href="/privacy-policy" className="hover:text-brand-orange transition-colors">Privacy Policy</a>
+        <span className="mx-1.5">·</span>
+        <a href="/terms-of-service" className="hover:text-brand-orange transition-colors">Terms of Service</a>
       </div>
     </footer>
   );
