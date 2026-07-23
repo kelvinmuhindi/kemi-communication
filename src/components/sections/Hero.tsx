@@ -21,9 +21,9 @@ export function Hero() {
         </div>
 
         <h1 className="max-w-[820px] font-display text-[40px] leading-[1.08] text-white sm:text-[62px] lg:text-[72px]">
-          Freight you can track.
+          Powering Trade,
           <br />
-          Deliveries you can <span className="text-brand-orange">rely on.</span>
+          Delivered <span className="text-brand-orange">On Time.</span>
         </h1>
 
         <p className="mt-6 max-w-[560px] text-[17px] leading-relaxed text-[#C9C5C0] lg:max-w-[620px] lg:text-[19px]">
@@ -45,7 +45,7 @@ export function Hero() {
 
       {/* Stat strip */}
       <div className="relative border-t border-white/10 bg-black/20">
-        <div className="mx-auto grid max-w-[1240px] grid-cols-2 gap-6 px-6 py-10 sm:grid-cols-4">
+        <div className="mx-auto grid max-w-[1240px] grid-cols-2 gap-6 px-6 py-10 sm:grid-cols-3 lg:grid-cols-5">
           {heroStats.map((stat) => (
             <div key={stat.label} className="text-center sm:text-left">
               <div className="font-display text-3xl text-brand-orange sm:text-[34px] lg:text-[38px]">

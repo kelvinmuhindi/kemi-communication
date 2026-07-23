@@ -38,6 +38,7 @@ export const heroStats = [
   { value: "2025", label: "Founded" },
   { value: "1T–10T", label: "Fleet Capacity Range" },
   { value: "10+", label: "Towns & Cities Served" },
+  { value: "200+", label: "Deliveries Completed" },
   { value: "100%", label: "On-Time Commitment" },
 ];
 

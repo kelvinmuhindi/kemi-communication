@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kemi Communication Ltd | Road Freight & Logistics, On Time",
+  title: "Kemi Communication Ltd | Freight you can track. Deliveries you can rely on.",
   description:
     "Reliable road freight and logistics across Kenya and cross-border Africa. Serving manufacturers, stockists, wholesalers and retailers.",
 };
