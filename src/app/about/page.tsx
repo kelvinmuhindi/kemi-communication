@@ -5,14 +5,11 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { aboutContent } from "@/lib/content";
 
-import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "About Us",
+export const metadata = {
+  title: "About Us | Kemi Communication Ltd",
   description:
     "Learn about Kemi Communication Ltd, including our story, mission, vision and why clients trust us for road freight and logistics across Kenya.",
-  path: "/about",
-});
+};
 
 export default function AboutPage() {
   return (

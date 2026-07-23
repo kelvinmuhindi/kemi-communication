@@ -5,14 +5,11 @@ import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { siteConfig } from "@/lib/content";
 
-import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "Contact Us",
+export const metadata = {
+  title: "Contact Us | Kemi Communication Ltd",
   description:
-    "Get in touch with Kemi Communication Ltd via phone, email, WhatsApp and our office in Utawala, Nairobi.",
-  path: "/contact",
-});
+    "Get in touch with Kemi Communication Ltd via phone, email, WhatsApp and office address.",
+};
 
 export default function ContactPage() {
   return (

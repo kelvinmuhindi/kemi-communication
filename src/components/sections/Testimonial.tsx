@@ -10,9 +10,14 @@ export function Testimonial() {
         <p className="mt-2.5 font-display text-2xl leading-tight text-brand-ink sm:text-[28px] lg:text-[32px]">
           {testimonial.quote}
         </p>
-        <p className="mt-6.5 text-[13.5px] font-semibold text-brand-steel lg:text-[15px]">
-          {testimonial.author}
-        </p>
+        <div className="mt-7 flex flex-col items-center gap-1">
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-brand-steel">
+            Valued Client
+          </span>
+          <span className="font-display text-[18px] font-bold text-brand-ink sm:text-[20px]">
+            Kenafric Industries
+          </span>
+        </div>
       </div>
     </section>
   );

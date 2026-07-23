@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/lib/content";
 
 export function CtaBand() {
   return (
@@ -14,8 +15,11 @@ export function CtaBand() {
         <Button href="/get-a-quote" variant="primary">
           Get a Quote
         </Button>
-        <Button href="/become-a-partner" variant="outline-light">
-          Become a Partner
+        <Button
+          href={`https://wa.me/${siteConfig.whatsapp}`}
+          variant="outline-light"
+        >
+          Chat on WhatsApp
         </Button>
       </div>
     </section>

@@ -5,14 +5,11 @@ import { CareerApplicationForm } from "@/components/sections/CareerApplicationFo
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { careersContent, siteConfig } from "@/lib/content";
 
-import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "Careers",
+export const metadata = {
+  title: "Careers | Kemi Communication Ltd",
   description:
     "Work with us at Kemi Communication Ltd. Apply for driver, dispatch, logistics and support roles across our growing road freight business.",
-  path: "/careers",
-});
+};
 
 export default function CareersPage() {
   return (

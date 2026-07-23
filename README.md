@@ -153,6 +153,7 @@ these CSS variables with system-font fallbacks in place.
 - Real photos: vehicles, team, office. Using illustrated SVG placeholders for now.
 - Blog content, press coverage, brochure PDF, rate guide
 - M-Pesa payment integration (Daraja API)
+- Forex calculator widget
 - WhatsApp Business API setup (right now it's just a basic `wa.me` link)
 - Google Analytics 4
 

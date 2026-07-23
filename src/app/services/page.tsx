@@ -6,14 +6,11 @@ import { Fleet } from "@/components/sections/Fleet";
 import { Coverage } from "@/components/sections/Coverage";
 import { CtaBand } from "@/components/sections/CtaBand";
 
-import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "Freight & Logistics Services",
+export const metadata = {
+  title: "Services | Kemi Communication Ltd",
   description:
-    "Road freight transport, cross-border logistics and corporate bulk hire across Kenya and East Africa. Built for reliability, safety and speed.",
-  path: "/services",
-});
+    "Road freight transport, cross-border logistics and corporate bulk hire. Explore Kemi Communication's freight and logistics services.",
+};
 
 export default function ServicesPage() {
   return (

@@ -8,7 +8,6 @@ const footerLinks = [
   { label: "Resources", href: "/resources" },
   { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Become a Partner", href: "/become-a-partner" },
   { label: "Get a Quote", href: "/get-a-quote" },
 ];
 
@@ -44,7 +43,7 @@ export function Footer() {
           <h4 className="mb-4 text-[13px] uppercase tracking-wide text-white">
             Company
           </h4>
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 sm:block sm:space-y-2.5">
+          <ul className="space-y-3 sm:space-y-2.5">
             {footerLinks.map((link) => (
               <li key={link.href} className="text-[13.5px]">
                 <a
@@ -104,10 +103,6 @@ export function Footer() {
           © {new Date().getFullYear()} {siteConfig.legalName}. All rights
           reserved.
         </span>
-        <span className="mx-1.5">·</span>
-        <a href="/privacy-policy" className="hover:text-brand-orange transition-colors">Privacy Policy</a>
-        <span className="mx-1.5">·</span>
-        <a href="/terms-of-service" className="hover:text-brand-orange transition-colors">Terms of Service</a>
       </div>
     </footer>
   );

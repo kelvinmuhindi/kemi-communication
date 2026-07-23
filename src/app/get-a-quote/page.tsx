@@ -4,14 +4,11 @@ import { PageHero } from "@/components/sections/PageHero";
 import { QuoteForm } from "@/components/sections/QuoteForm";
 import { siteConfig } from "@/lib/content";
 
-import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "Get a Quote",
+export const metadata = {
+  title: "Get a Quote | Kemi Communication Ltd",
   description:
-    "Request a road freight quote from Kemi Communication Ltd. Tell us your route, cargo type and timeline and we will respond within one business day.",
-  path: "/get-a-quote",
-});
+    "Request a freight quote from Kemi Communication Ltd. Tell us your route, cargo type and timeline.",
+};
 
 export default function GetAQuotePage() {
   return (

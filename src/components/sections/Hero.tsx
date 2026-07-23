@@ -21,9 +21,9 @@ export function Hero() {
         </div>
 
         <h1 className="max-w-[820px] font-display text-[40px] leading-[1.08] text-white sm:text-[62px] lg:text-[72px]">
-          Powering Trade,
+          Freight you can track.
           <br />
-          Delivered <span className="text-brand-orange">On Time.</span>
+          Deliveries you can <span className="text-brand-orange">rely on.</span>
         </h1>
 
         <p className="mt-6 max-w-[560px] text-[17px] leading-relaxed text-[#C9C5C0] lg:max-w-[620px] lg:text-[19px]">

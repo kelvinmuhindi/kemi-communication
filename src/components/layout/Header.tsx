@@ -49,10 +49,15 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2.5 lg:flex xl:gap-3.5">
-          <Button href="/become-a-partner" variant="dark" className="whitespace-nowrap !px-4 !text-[13px] xl:!px-5">
-            Become a Partner
-          </Button>
-          <Button href="/get-a-quote" variant="primary" className="whitespace-nowrap !px-4 !text-[13px] xl:!px-6 hover:!bg-brand-ink hover:!shadow-none">
+          <a
+            href={`https://wa.me/${siteConfig.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-sm bg-brand-ink px-4 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-brand-orange-deep xl:px-5"
+          >
+            WhatsApp Us
+          </a>
+          <Button href="/get-a-quote" variant="primary" className="whitespace-nowrap !px-4 !text-[13px] xl:!px-6">
             Get a Quote
           </Button>
         </div>
@@ -82,10 +87,15 @@ export function Header() {
             ))}
           </ul>
           <div className="mt-4 flex flex-col gap-3">
-            <Button href="/become-a-partner" variant="dark" className="justify-center">
-              Become a Partner
-            </Button>
-            <Button href="/get-a-quote" variant="primary" className="justify-center hover:!bg-brand-ink hover:!shadow-none">
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm bg-brand-ink px-5 py-2.5 text-center text-sm font-bold text-white"
+            >
+              WhatsApp Us
+            </a>
+            <Button href="/get-a-quote" variant="primary" className="justify-center">
               Get a Quote
             </Button>
           </div>

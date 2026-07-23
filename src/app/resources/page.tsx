@@ -7,14 +7,11 @@ import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { resourceItems } from "@/lib/content";
 
-import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "Resources",
+export const metadata = {
+  title: "Resources | Kemi Communication Ltd",
   description:
-    "Company brochures and FAQs from Kemi Communication Ltd to help you plan your freight shipment across Kenya.",
-  path: "/resources",
-});
+    "Company brochures, FAQs and rate guides from Kemi Communication Ltd.",
+};
 
 export default function ResourcesPage() {
   return (
@@ -24,7 +21,7 @@ export default function ResourcesPage() {
         <PageHero
           eyebrow="Resources"
           title="Helpful documents & guides"
-          description="Brochures and FAQs to help you plan your shipment."
+          description="Brochures, FAQs and rate information to help you plan your shipment."
         />
 
         <section className="px-6 py-[90px]">
