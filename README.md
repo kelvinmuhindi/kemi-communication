@@ -1,48 +1,41 @@
-# My Kemi Communication website
+# Kemi Communication Ltd — Website
 
-This is my Next.js project for the Kemi Communication Ltd website. I'm
-keeping notes here for myself so I remember how everything fits together
-and what's still outstanding. Built with Next.js 16 (App Router), React 19,
-TypeScript and Tailwind CSS v4.
+Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS v4.
+Deployed on Vercel. Source on GitHub.
 
-I modeled the site structure after Siginon Group's navigation: About Us,
-Services, Media, Resources, Contact Us and a dedicated Get a Quote page.
-No "Home" link in the nav since I removed it on purpose.
-
-## Running it
+## Running locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open http://localhost:3000.
+Open http://localhost:3000.
 
-## My site map
+## Site map
 
-| Route | Page | What's there |
-|---|---|---|
-| `/` | Home | Dark hero with the stat strip, "Why Choose Us" grid, a short services teaser (one-liners, not full detail), testimonial, CTA. I modeled this on siginon.com and freightforwarders.co.ke. No duplicated content, the full detail only lives on its own page. |
-| `/about` | About Us | My story, mission/vision, values, "why choose us" |
-| `/services` | Services | Full service list, fleet, coverage routes |
-| `/media` | Media | News/announcements and a blog placeholder |
-| `/resources` | Resources | Brochure/rate guide placeholders, real FAQ accordion (12 questions) |
-| `/contact` | Contact Us | Contact details and a general enquiry form |
-| `/get-a-quote` | Get a Quote | Dedicated freight quote request form |
-| `/careers` | Careers | "Work With Us" page, job application form with CV upload |
+| Route | Page |
+|---|---|
+| `/` | Home — hero, stats strip, Why Choose Us, services teaser, testimonial, CTA |
+| `/about` | About Us — story, mission, vision, values |
+| `/services` | Services — full service list, fleet, coverage routes |
+| `/media` | Media — news and announcements |
+| `/resources` | Resources — brochure placeholder, FAQ accordion |
+| `/contact` | Contact Us — contact details, enquiry form, WhatsApp link |
+| `/get-a-quote` | Get a Quote — freight quote request form |
+| `/careers` | Careers — job listings, application form with CV upload |
+| `/become-a-partner` | Become a Partner — vehicle partner programme, application form |
+| `/privacy-policy` | Privacy Policy — Kenya Data Protection Act 2019 compliant |
+| `/terms-of-service` | Terms of Service — website and service terms, Kenyan law |
 
-The top nav (`src/components/layout/Header.tsx`) is a flat list, no
-dropdowns. Every click is a real page change, not a scroll on one long
-page. I edit the menu itself in `src/lib/content.ts` under `navLinks`.
-
-## How the project is organized
+## Project structure
 
 ```
 src/
   app/
-    layout.tsx              Root layout, metadata, html/body shell
+    layout.tsx                Root layout — fonts, GA4, JSON-LD, OG metadata
     page.tsx                  Homepage
-    globals.css                Tailwind import and brand color tokens (@theme)
+    globals.css               Tailwind + brand color tokens
     about/page.tsx
     services/page.tsx
     media/page.tsx
@@ -50,223 +43,143 @@ src/
     contact/page.tsx
     get-a-quote/page.tsx
     careers/page.tsx
+    become-a-partner/page.tsx
+    privacy-policy/page.tsx
+    terms-of-service/page.tsx
+    sitemap.ts                Auto-generates /sitemap.xml
+    robots.ts                 Auto-generates /robots.txt
     api/
-      contact/route.ts          POST endpoint for the contact form
-      get-a-quote/route.ts      POST endpoint for the quote request form
-      careers/route.ts          POST endpoint for the job application form, accepts
-                                 multipart/form-data (not JSON) since it handles a
-                                 file upload, see "CV upload notes" below
+      contact/route.ts
+      get-a-quote/route.ts
+      careers/route.ts        Accepts multipart/form-data (CV upload)
+      become-a-partner/route.ts
   components/
     layout/
-      Header.tsx             Sticky nav with mobile menu
-      Footer.tsx               Site footer
+      Header.tsx              Sticky nav, mobile menu, Become a Partner + Get a Quote buttons
+      Footer.tsx              Site footer — company links, contact, hours, legal links
+      LegalLayout.tsx         Wrapper for Privacy Policy and Terms of Service pages
     sections/
-      PageHero.tsx            Shared dark banner at the top of every sub-page
-      Hero.tsx                  Homepage-only full-bleed hero with stat strip
-      WhyChooseUs.tsx           Homepage feature grid
-      ServicesTeaser.tsx        Homepage service one-liners, links out to /services
-      Services.tsx              Full service grid, used on /services only
+      Hero.tsx                Homepage hero with stat strip
+      WhyChooseUs.tsx
+      ServicesTeaser.tsx
+      Services.tsx
       Fleet.tsx
-      Coverage.tsx              Just the stats and the Kenya map now, no duplicate text list
-      KenyaMap.tsx              Custom SVG map, real Kenya outline built from actual
-                                 constituency-level boundary data (union of all
-                                 constituency polygons, simplified to ~50 points).
-                                 White border stroke, Nairobi hub with routes to
-                                 each city.
-      Testimonial.tsx
-      CtaBand.tsx               Reusable CTA band at the bottom of most pages
-      ContactForm.tsx           Client component, handles /contact form state and submit
-      QuoteForm.tsx             Client component, handles /get-a-quote form state and submit
-      CareerApplicationForm.tsx  Client component, handles /careers form state, submit,
-                                 and CV file upload (drag-free, click-to-upload)
-      FaqAccordion.tsx          Client component, real FAQ content (12 questions),
-                                 click to expand/collapse, used on /resources
+      Coverage.tsx
+      KenyaMap.tsx            Custom SVG Kenya map with city routes
+      Testimonial.tsx         Kenafric Industries quote
+      CtaBand.tsx             Reusable CTA band — Become a Partner + Get a Quote
+      PageHero.tsx            Dark banner for sub-pages
+      ContactForm.tsx
+      QuoteForm.tsx
+      CareerApplicationForm.tsx
+      PartnerForm.tsx
+      FaqAccordion.tsx
+    seo/
+      JsonLd.tsx              Schema.org JSON-LD — Organisation, LocalBusiness, WebSite
     ui/
-      Button.tsx               Shared button variants (primary/ghost/dark/outline-light)
-      Eyebrow.tsx               Small section label with the dash
+      Button.tsx              primary / ghost / dark / outline-light variants
+      Eyebrow.tsx
   lib/
-    content.ts                  All my site copy lives here: nav structure, services,
-                                 fleet specs, about/media/resources content, contact
-                                 info, quote-form dropdown options. I edit here first,
-                                 most content changes never need me to touch a
-                                 component file.
-    email.ts                    Resend email-sending helper, used by both API routes
-    whatsapp.ts                 WhatsApp Business Cloud API helper, used by both API routes
-    validation.ts                Shared email and Kenyan phone number validation
+    content.ts                All site copy and config — edit here first
+    seo.ts                    buildMetadata() helper used by every page
+    email.ts                  Resend email helper
+    whatsapp.ts               WhatsApp Business Cloud API helper
+    validation.ts             Email and Kenyan phone validation
 public/
   images/
-    logo.png                      My logo, transparent background
+    logo.jpeg                 Company logo
+  sitemap.xml                 Static sitemap (also generated dynamically by sitemap.ts)
+  google5e11bf72712385d6.html Google Search Console verification file
 ```
 
-## My brand colors
+## Brand colors
 
-Defined in `src/app/globals.css` under `@theme inline`, available as
-Tailwind classes:
+Defined in `src/app/globals.css` under `@theme inline`:
 
 | Token | Hex | Tailwind class |
 |---|---|---|
-| Orange (primary) | `#FF9700` | `bg-brand-orange`, `text-brand-orange` |
-| Orange deep (hover) | `#E08300` | `bg-brand-orange-deep` |
-| Ink (near-black) | `#181614` | `bg-brand-ink`, `text-brand-ink` |
+| Orange | `#FF9700` | `bg-brand-orange` |
+| Orange deep | `#E08300` | `bg-brand-orange-deep` |
+| Ink | `#181614` | `bg-brand-ink` |
 | Ink soft | `#3A3633` | `text-brand-ink-soft` |
-| Steel (muted text) | `#5B6670` | `text-brand-steel` |
-| Paper (white background) | `#FFFFFF` | `bg-brand-paper` |
-| Paper warm (section background) | `#FAF7F3` | `bg-brand-paper-warm` |
-| Line (borders) | `#ECE7E0` | `border-brand-line` |
+| Steel | `#5B6670` | `text-brand-steel` |
+| Paper | `#FFFFFF` | `bg-brand-paper` |
+| Paper warm | `#FAF7F3` | `bg-brand-paper-warm` |
+| Line | `#ECE7E0` | `border-brand-line` |
 
-## Fonts, still need to fix this
+## SEO setup
 
-I built this project in a sandboxed environment that couldn't reach
-`fonts.googleapis.com`, so right now it's falling back to system fonts
-(Arial Black / system sans). The fonts I actually want are Archivo Black
-for headings and Inter for body text. To turn them on, in
-`src/app/layout.tsx` I need to add:
-
-```tsx
-import { Archivo_Black, Inter } from "next/font/google";
-
-const archivoBlack = Archivo_Black({
-  variable: "--font-archivo-black",
-  weight: "400",
-  subsets: ["latin"],
-});
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-```
-
-Then add `${archivoBlack.variable} ${inter.variable}` to the `<html>`
-className. Nothing else needs to change, `globals.css` already points at
-these CSS variables with system-font fallbacks in place.
-
-## Where things stand
-
-**Done:**
-- 7 pages: Home, About Us, Services, Media, Resources, Contact Us, Get a Quote
-- Flat navigation, no dropdowns
-- Contact form and Get a Quote form, wired to real API routes
-- Fully responsive, mobile menu, responsive grids
-- All copy centralized in `lib/content.ts`
-
-**Still waiting on me (content/assets I need to provide):**
-- Real photos: vehicles, team, office. Using illustrated SVG placeholders for now.
-- Blog content, press coverage, brochure PDF, rate guide
-- M-Pesa payment integration (Daraja API)
-- Forex calculator widget
-- WhatsApp Business API setup (right now it's just a basic `wa.me` link)
-- Google Analytics 4
-
-**Still waiting on setup (not content, just configuration):**
-- WhatsApp notifications are coded and ready, but inactive until I finish
-  Meta's WhatsApp Business API setup (steps below). Email notifications
-  are already working, Resend API key is added in Vercel.
-
-## Setting up form notifications
-
-Both `/contact` and `/get-a-quote` submit to real API routes
-(`src/app/api/contact/route.ts` and `src/app/api/get-a-quote/route.ts`)
-that validate the input then try to send an email and a WhatsApp message.
-The two channels are independent: if one isn't set up yet the other still
-works and the form still succeeds for whoever's filling it out either way.
-
-### Email (Resend), already done
-
-I've already signed up at [resend.com](https://resend.com), grabbed an API
-key and added `RESEND_API_KEY` in Vercel under Project Settings →
-Environment Variables. Email notifications are live.
-
-Two related variables I can optionally set in the same place:
-- `NOTIFY_EMAIL_TO`, the inbox that should receive form notifications
-  (defaults to the address in `siteConfig.email` if I don't set this)
-- `NOTIFY_EMAIL_FROM`, the "from" address. Right now this is using
-  Resend's sandbox address `onboarding@resend.dev`. To send from my own
-  domain (e.g. `notifications@kemicommunication.com`), I need to verify
-  that domain under Domains in the Resend dashboard first, this means
-  adding a few DNS records, similar to the Vercel domain setup I already
-  did.
-
-### WhatsApp (Meta WhatsApp Business Cloud API)
-
-This one needs a Meta developer account and business verification. It's
-free but has more steps than email:
-
-1. Go to [developers.facebook.com](https://developers.facebook.com) and
-   create a Meta Developer account if I don't have one yet.
-2. Create a new App, select Business as the app type.
-3. Add the WhatsApp product to the app.
-4. Meta gives a free test phone number I can use right away, or I can
-   register my own business number.
-5. From the WhatsApp dashboard I copy:
-   - The temporary access token for testing, or a permanent token under
-     System Users for production
-   - The Phone Number ID (not the actual phone number, an internal
-     numeric ID Meta assigns)
-6. In Vercel, under Project Settings → Environment Variables, I add:
-   - `WHATSAPP_ACCESS_TOKEN`, the token from step 5
-   - `WHATSAPP_PHONE_NUMBER_ID`, the phone number ID from step 5
-   - `WHATSAPP_NOTIFY_TO`, the phone number that should receive
-     notifications, country code, no `+` or spaces (e.g. `254704881748`)
-7. Important: Meta's test numbers can only message numbers I've added to
-   an approved recipient list while the app is still in development mode.
-   For unrestricted sending the app needs to go through Meta's app review.
-8. Redeploy for the new environment variables to kick in.
-
-Until I set the WhatsApp variables, the API routes just log a warning and
-skip sending, they never break the form submission because of it.
-
-### CV upload notes (Careers page)
-
-The `/careers` form is different from the other two: it sends `multipart/form-data`
-(not JSON) because of the file upload, and the CV gets attached directly to the
-notification email via Resend's attachments parameter.
-
-A few constraints worth knowing:
-- **3MB file size cap**, enforced both client-side (instant feedback before
-  submit) and server-side. I set it there on purpose: Vercel serverless
-  functions have a hard 4.5MB request body limit, and base64 encoding adds
-  about 33% overhead, so a 3MB raw file becomes roughly 4MB once encoded,
-  comfortably under that ceiling. Raising this limit risks the request
-  failing with a 413 error before my own validation even runs.
-- **Accepted formats:** PDF, DOC, DOCX only.
-- If `RESEND_API_KEY` isn't set, the CV still gets validated and the form
-  still succeeds for the applicant, the email (and the attachment) just
-  doesn't send, same fallback behavior as the other two forms.
-
-### Testing this locally
-
-I create a `.env.local` file in the project root (it's git-ignored, never
-commit it) with the same variables listed above, then run `npm run dev`.
-Submitting either form will attempt real sends using whatever keys are
-present.
-
-## Commands I actually use
-
-```bash
-npm run dev      # start dev server
-npm run build    # production build
-npm run start    # serve production build
-npx eslint src   # lint
-npx tsc --noEmit # type-check only
-```
+- **Per-page metadata** — every page uses `buildMetadata()` from `src/lib/seo.ts` for unique titles, descriptions, canonical URLs and Open Graph tags
+- **JSON-LD** — `JsonLd.tsx` injects Organisation + LocalBusiness + WebSite structured data into `<head>` on every page, covering business name, address, phone, hours and service area
+- **Sitemap** — `/sitemap.xml` is generated by `src/app/sitemap.ts` and also exists as a static file at `public/sitemap.xml`
+- **robots.txt** — generated by `src/app/robots.ts`, allows all pages, disallows `/api/`
+- **Google Search Console** — verification file is in `public/`. Submit `https://www.kemicommunication.com/sitemap.xml` in Search Console once verified
+- **OG image** — add a 1200×630px branded image at `public/images/og-default.png` for social sharing previews
 
 ## Analytics
 
-Vercel Speed Insights and Vercel Analytics are both wired up in
-`src/app/layout.tsx` (`@vercel/speed-insights/next` and
-`@vercel/analytics/next`). Both turn on automatically once deployed on
-Vercel, nothing else for me to do. Locally or on other hosts they just do
-nothing. Speed Insights tracks page performance, Analytics tracks
-visitor/pageview data, I can see both under their respective tabs in my
-Vercel project dashboard.
+- **Google Analytics 4** (`G-F7EQV8YX20`) — loaded via `next/script` with `strategy="afterInteractive"` in `layout.tsx`. Fires on every page
+- **Vercel Speed Insights** — tracks Core Web Vitals, visible in Vercel dashboard
+- **Vercel Analytics** — tracks visitors and pageviews, visible in Vercel dashboard
 
-Google Analytics 4 isn't added yet, it's in my "still waiting on me" list above.
+## Forms and notifications
 
-## Favicon and app icons
+All four forms (`/contact`, `/get-a-quote`, `/careers`, `/become-a-partner`) POST to API routes that validate input, send an email via Resend and attempt a WhatsApp notification. The two channels are independent — if one isn't configured the other still works and the form succeeds either way.
 
-`src/app/favicon.ico`, `src/app/icon.png` and `src/app/apple-icon.png` are
-cropped from my logo (just the truck graphic, since the full logo with the
-wordmark turns illegible at favicon sizes). Next.js auto-detects these
-filenames, I don't need any manual `<link>` tags or metadata config. To
-change them I just replace the files with new images of the same name,
-any reasonable square image works and Next.js handles resizing.
+### Environment variables (set in Vercel → Project Settings → Environment Variables)
+
+| Variable | Required | Description |
+|---|---|---|
+| `RESEND_API_KEY` | Yes (for email) | From your Resend dashboard |
+| `NOTIFY_EMAIL_TO` | No | Inbox to receive notifications. Defaults to `siteConfig.email` |
+| `NOTIFY_EMAIL_FROM` | No | Sender address. Defaults to `onboarding@resend.dev`. Set to your own domain address once verified in Resend |
+| `WHATSAPP_ACCESS_TOKEN` | No | From Meta WhatsApp Business dashboard |
+| `WHATSAPP_PHONE_NUMBER_ID` | No | Phone Number ID from Meta dashboard |
+| `WHATSAPP_NOTIFY_TO` | No | Number to receive notifications, country code no `+` e.g. `254704881748` |
+
+### CV upload (Careers form)
+
+- Sends `multipart/form-data`, not JSON
+- 3MB file size cap (Vercel serverless limit is 4.5MB; base64 adds ~33% overhead)
+- Accepted formats: PDF, DOC, DOCX
+- CV is attached directly to the notification email via Resend
+
+### Testing locally
+
+Create `.env.local` in the project root (git-ignored) with the variables above, then run `npm run dev`.
+
+## Deployment
+
+Hosted on Vercel, connected to GitHub. Every push to `main` triggers an automatic deploy.
+
+To deploy manually without GitHub:
+
+```bash
+npm install -g vercel
+vercel login
+vercel --prod
+```
+
+## Pending items
+
+**Content needed:**
+- Real photos — trucks, cargo, team, operations. Currently using SVG placeholders
+- OG image at `public/images/og-default.png` (1200×630px) for social sharing
+- Blog/news posts on the Media page (helps SEO significantly)
+- Company brochure PDF for the Resources page
+
+**Setup needed:**
+- Register as data controller with Kenya's ODPC (legal requirement under the Data Protection Act 2019)
+- WhatsApp Business API — Meta developer account and business verification needed (env vars above)
+- Resend custom domain — verify `kemicommunication.com` in Resend to send from your own address instead of `onboarding@resend.dev`
+- Google Business Profile at business.google.com
+
+## Commands
+
+```bash
+npm run dev        # dev server
+npm run build      # production build
+npm run start      # serve production build
+npx eslint src     # lint
+npx tsc --noEmit   # type-check
+```
