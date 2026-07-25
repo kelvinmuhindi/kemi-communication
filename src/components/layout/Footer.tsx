@@ -8,6 +8,7 @@ const footerLinks = [
   { label: "Resources", href: "/resources" },
   { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
+  { label: "Become a Partner", href: "/become-a-partner" },
   { label: "Get a Quote", href: "/get-a-quote" },
 ];
 
@@ -18,11 +19,11 @@ export function Footer() {
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.jpeg"
               alt={`${siteConfig.name} logo`}
-              width={63}
-              height={44}
-              className="h-11 w-auto rounded"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-lg object-cover"
             />
             <div className="flex flex-col leading-tight">
               <span className="font-display text-sm uppercase tracking-wide text-white">
@@ -43,7 +44,7 @@ export function Footer() {
           <h4 className="mb-4 text-[13px] uppercase tracking-wide text-white">
             Company
           </h4>
-          <ul className="space-y-3 sm:space-y-2.5">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 sm:block sm:space-y-2.5">
             {footerLinks.map((link) => (
               <li key={link.href} className="text-[13.5px]">
                 <a
@@ -99,10 +100,14 @@ export function Footer() {
       </div>
 
       <div className="mx-auto max-w-[1240px] pt-6 text-center text-[12px] sm:text-[12.5px]">
-        <span>
-          © {new Date().getFullYear()} {siteConfig.legalName}. All rights
-          reserved.
-        </span>
+        <p>© {new Date().getFullYear()} {siteConfig.legalName}.</p>
+        <p className="mt-0.5 sm:hidden">All rights reserved.</p>
+        <p className="mt-1">
+          <span className="hidden sm:inline">All rights reserved<span className="mx-1.5">·</span></span>
+          <a href="/privacy-policy" className="hover:text-brand-orange transition-colors">Privacy Policy</a>
+          <span className="mx-1.5">·</span>
+          <a href="/terms-of-service" className="hover:text-brand-orange transition-colors">Terms of Service</a>
+        </p>
       </div>
     </footer>
   );
