@@ -169,10 +169,7 @@ vercel --prod
 - Company brochure PDF for the Resources page
 
 **Setup needed:**
-- Register as data controller with Kenya's ODPC (legal requirement under the Data Protection Act 2019)
 - WhatsApp Business API — Meta developer account and business verification needed (env vars above)
-- Resend custom domain — verify `kemicommunication.com` in Resend to send from your own address instead of `onboarding@resend.dev`
-- Google Business Profile at business.google.com
 
 ## Commands
 
