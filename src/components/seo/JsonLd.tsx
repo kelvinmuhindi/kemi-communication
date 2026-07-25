@@ -17,7 +17,7 @@ export function JsonLd() {
         url: siteConfig.url,
         logo: {
           "@type": "ImageObject",
-          url: `${siteConfig.url}/images/logo.png`,
+          url: `${siteConfig.url}/images/logo.jpeg`,
           width: 132,
           height: 92,
         },

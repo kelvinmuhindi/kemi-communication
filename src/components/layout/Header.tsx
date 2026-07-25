@@ -15,11 +15,11 @@ export function Header() {
       <div className="mx-auto flex max-w-[1240px] items-center justify-between px-6 py-3.5">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.jpeg"
             alt={`${siteConfig.name} logo`}
-            width={66}
-            height={46}
-            className="h-[46px] w-auto"
+            width={80}
+            height={80}
+            className="h-[60px] w-[60px] rounded-lg object-cover"
             priority
           />
           <div className="flex flex-col leading-tight">
