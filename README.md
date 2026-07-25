@@ -132,7 +132,7 @@ All four forms (`/contact`, `/get-a-quote`, `/careers`, `/become-a-partner`) POS
 |---|---|---|
 | `RESEND_API_KEY` | Yes (for email) | From your Resend dashboard |
 | `NOTIFY_EMAIL_TO` | No | Inbox to receive notifications. Defaults to `siteConfig.email` |
-| `NOTIFY_EMAIL_FROM` | No | Sender address. Defaults to `onboarding@resend.dev`. Set to your own domain address once verified in Resend |
+| `NOTIFY_EMAIL_FROM` | No | Sender address. Domain `kemicommunication.com` is verified in Resend — set to e.g. `notifications@kemicommunication.com` |
 | `WHATSAPP_ACCESS_TOKEN` | No | From Meta WhatsApp Business dashboard |
 | `WHATSAPP_PHONE_NUMBER_ID` | No | Phone Number ID from Meta dashboard |
 | `WHATSAPP_NOTIFY_TO` | No | Number to receive notifications, country code no `+` e.g. `254704881748` |
