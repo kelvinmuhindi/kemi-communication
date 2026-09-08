@@ -12,6 +12,8 @@ npm run dev
 
 Open http://localhost:3000.
 
+> **Note:** `sharp` (Next.js image optimisation) and `unrs-resolver` (ESLint) require install scripts. These are pre-approved in `.npmrc` so no manual approval step is needed.
+
 ## Site map
 
 | Route | Page |
